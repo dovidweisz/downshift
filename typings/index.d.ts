@@ -43,7 +43,7 @@ export interface DownshiftProps {
     stateAndHelpers: ControllerStateAndHelpers,
   ) => void
   onStateChange?: (
-    options: StateChangeOptions,
+    options: RequiredStateChangeOptions,
     stateAndHelpers: ControllerStateAndHelpers,
   ) => void
   onInputValueChange?: (
@@ -52,7 +52,7 @@ export interface DownshiftProps {
   ) => void
   stateReducer?: (
     state: DownshiftState,
-    changes: StateChangeOptions,
+    changes: RequiredStateChangeOptions,
   ) => StateChangeOptions
   itemCount?: number
   highlightedIndex?: number
@@ -65,7 +65,7 @@ export interface DownshiftProps {
   environment?: Environment
   onOuterClick?: () => void
   onUserAction?: (
-    options: StateChangeOptions,
+    options: RequiredStateChangeOptions,
     stateAndHelpers: ControllerStateAndHelpers,
   ) => void
 }
@@ -98,6 +98,8 @@ export interface StateChangeOptions {
   isOpen?: boolean
   selectedItem?: any
 }
+
+export type RequiredStateChangeOptions = Required<StateChangeOptions>;
 
 export interface GetRootPropsOptions {
   refKey: string
