@@ -99,7 +99,13 @@ export interface StateChangeOptions {
   selectedItem?: any
 }
 
-export type RequiredStateChangeOptions = Required<StateChangeOptions>;
+export interface RequiredStateChangeOptions {
+  type: StateChangeTypes
+  highlightedIndex: number
+  inputValue: string
+  isOpen: boolean
+  selectedItem: any
+}
 
 export interface GetRootPropsOptions {
   refKey: string
