@@ -93,10 +93,10 @@ export interface A11yStatusMessageOptions {
 
 export interface StateChangeOptions {
   type: StateChangeTypes
-  highlightedIndex: number
-  inputValue: string
-  isOpen: boolean
-  selectedItem: any
+  highlightedIndex?: number
+  inputValue?: string
+  isOpen?: boolean
+  selectedItem?: any
 }
 
 export interface GetRootPropsOptions {
