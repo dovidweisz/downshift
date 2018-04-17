@@ -57,7 +57,7 @@ export interface DownshiftProps<Item> {
   stateReducer?: (
     state: DownshiftState<Item>,
     changes: StateChangeOptions<Item>,
-  ) => Partial<StateChangeOptions<Item>>
+  ) => PartialStateChangeOptions<Item>
   itemCount?: number
   highlightedIndex?: number
   inputValue?: string
@@ -96,9 +96,11 @@ export interface StateChangeOptions<Item>
   type: StateChangeTypes
 }
 
+type PartialStateChangeOptions<Item> = Partial<StateChangeOptions<Item>>
+
 type StateChangeFunction<Item> = (
   state: DownshiftState<Item>,
-) => Partial<StateChangeOptions<Item>>
+) => PartialStateChangeOptions<Item>
 
 export interface GetRootPropsOptions {
   refKey: string
@@ -135,32 +137,32 @@ export interface PropGetters<Item> {
 
 export interface Actions<Item> {
   reset: (
-    otherStateToSet?: Partial<StateChangeOptions<Item>>,
+    otherStateToSet?: PartialStateChangeOptions<Item>,
     cb?: Callback,
   ) => void
   openMenu: (cb?: Callback) => void
   closeMenu: (cb?: Callback) => void
   toggleMenu: (
-    otherStateToSet?: Partial<StateChangeOptions<Item>>,
+    otherStateToSet?: PartialStateChangeOptions<Item>,
     cb?: Callback,
   ) => void
   selectItem: (
     item: Item,
-    otherStateToSet?: Partial<StateChangeOptions<Item>>,
+    otherStateToSet?: PartialStateChangeOptions<Item>,
     cb?: Callback,
   ) => void
   selectItemAtIndex: (
     index: number,
-    otherStateToSet?: Partial<StateChangeOptions<Item>>,
+    otherStateToSet?: PartialStateChangeOptions<Item>,
     cb?: Callback,
   ) => void
   selectHighlightedItem: (
-    otherStateToSet?: Partial<StateChangeOptions<Item>>,
+    otherStateToSet?: PartialStateChangeOptions<Item>,
     cb?: Callback,
   ) => void
   setHighlightedIndex: (
     index: number,
-    otherStateToSet?: Partial<StateChangeOptions<Item>>,
+    otherStateToSet?: PartialStateChangeOptions<Item>,
     cb?: Callback,
   ) => void
   clearSelection: (cb?: Callback) => void
@@ -168,7 +170,7 @@ export interface Actions<Item> {
   setItemCount: (count: number) => void
   unsetItemCount: () => void
   setState: (
-    stateToSet: Partial<StateChangeOptions<Item>> | StateChangeFunction<Item>,
+    stateToSet: PartialStateChangeOptions<Item> | StateChangeFunction<Item>,
     cb?: Callback,
   ) => void
   // props
